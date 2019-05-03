@@ -8,7 +8,7 @@ os_cloud: 'engcloud-cloud-ci'
 # of the value that will identify the created virtual environment.
 # WARNING: if a virtual environment associated with the supplied ardana_env already
 # exists, it will be replaced.
-ardana_env: ''
+ardana_env: 'duartead'
 
 # If left unchecked, the cloud deployment steps will be skipped. This option can be used
 # if you only need to set up the infrastructure and configure the cloud media and
@@ -24,7 +24,7 @@ deploy_cloud: true
 #   GM<X> (official GM)
 #   GM<X>+up (official GM plus Cloud-Updates)
 #   cloud9MX (cloud 9 milestones)
-cloudsource: 'GM8+up'
+cloudsource: 'stagingcloud9'
 
 # Enable SLES/Cloud test update repos (the Cloud test update repos will be enabled only
 # when cloudsource is GM based)
@@ -77,7 +77,7 @@ model: ''
 #   - standard
 #   - std-lmm
 #   - std-split
-scenario_name: 'entry-scale-kvm'
+scenario_name: 'std-min'
 
 # The type of deployer node deployment to use for the generated input model.
 # Possible values:
@@ -94,7 +94,7 @@ controllers: '3'
 
 # The number of SLES compute nodes in the generated input model.
 # Input model generator scenarios using this parameter: all
-sles_computes: '2'
+sles_computes: '1'
 
 # The number of RHEL (CentOS) compute nodes in the generated input model.
 # Input model generator scenarios using this parameter: all
@@ -133,15 +133,15 @@ swift_nodes: ''
 # Input model generator scenarios using this parameter: all
 # Example for disabling monasca, ceilometer, freezer and octavia set:
 # disabled_services: 'monasca|logging|ceilometer|cassandra|kafka|spark|storm|freezer|octavia'
-disabled_services: ''
+disabled_services: 'monasca|logging|ceilometer|cassandra|kafka|spark|storm|freezer|octaviaa'
 
 # Use ipv6 networks in the cloud input model.
-ipv6: false
+ipv6: true
 
 
 #============= SES =============#
 # Configure SES backend for glance, cinder, cinder-backup and nova
-ses_enabled: true
+ses_enabled: false
 
 # Configure object-store service with RADOS Gateway. This only takes effect
 # if ses_enabled is set to true.
