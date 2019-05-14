@@ -31,6 +31,6 @@ bootstrap_clm
 deploy_ses_vcloud
 bootstrap_nodes
 deploy_cloud
-update_cloud
-run_tempest
-run_qa_tests
+#update_cloud
+#run_tempest
+#run_qa_tests

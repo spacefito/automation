@@ -31,6 +31,9 @@ deployer_qe
 ses_qe
 
 [deployer_virt]
+# BEGIN ANSIBLE MANAGED BLOCK - ARDANA
+duartead      ansible_host=10.86.2.197
+# END ANSIBLE MANAGED BLOCK - ARDANA
 
 [ses_virt]
 
