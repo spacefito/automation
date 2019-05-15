@@ -61,7 +61,7 @@ homeproject: ''
 # possible values are:
 # - crowbar
 # - ardana (default)
-cloud_product: ''
+cloud_product: 'ardana'
 
 # The name of the one of the available 'ardana-ci' input models to use from
 # the ardana-input-model git repository.
