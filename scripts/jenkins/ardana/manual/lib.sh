@@ -218,6 +218,14 @@ function deploy_cloud {
   fi
 }
 
+function deploy_without_cloud {
+  if [ "$(get_cloud_product)" == "crowbar" ]; then
+    ansible_playbook deploy-crowbar.yml -e "skip_cloud_deployment=True"
+  elif $(get_from_input deploy_cloud); then
+    ansible_playbook deploy-cloud.yml -e "skip_cloud_deployment=True"
+  fi
+}
+
 function update_cloud {
   if $(get_from_input deploy_cloud) && $(get_from_input update_after_deploy); then
     ansible_playbook ardana-update.yml -e cloudsource=$(get_from_input update_to_cloudsource)
