@@ -16,7 +16,7 @@
 ---
 
 network_groups:
-  - name: IPV4-MANAGMENT
+  - name: IPV4-MANAGEMENT
     hostname_suffix: ipv4-mgmt
     tagged_vlan: false
     component_endpoints:
