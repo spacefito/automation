@@ -33,8 +33,24 @@
         - mysql
         - rabbitmq
 {%   endif %}
+
+{%   if 'IPV4-MANAGEMENT' in network_group['component_endpoints'] %}
+      tls-component-endpoints:
+        # The following service endpoints are behind TLS
+        - mysql
+        - rabbitmq
+{%   endif %}
+{%   if 'IPV6-MANAGEMENT' in network_group['component_endpoints'] %}
+      # We use the IPV6-MANAGEMENT network to derive server hostnames
+      hostname: true
+      tls-component-endpoints:
+        # The following service endpoints are behind TLS
+        - barbican-api
+{%   endif %}
       component-endpoints:
-{%   if 'MANAGEMENT' in network_group['component_endpoints'] %}
+{%   if ('MANAGEMENT' in network_group['component_endpoints'])
+     or ('IPV6-MANAGEMENT' in network_group['component_endpoints'])
+ %}
 
         #
         # Management
@@ -75,7 +91,9 @@
 {%   endif %}
 
 {%   set ns.routes=network_group.routes|default([]) %}
-{%   if 'MANAGEMENT' in network_group.component_endpoints %}
+{%   if ('MANAGEMENT' in network_group.component_endpoints)
+     or ('IPV6-MANAGEMENT' in network_group.component_endpoints)
+ %}
 {%     if bm_info is defined %}
 {%       set _ = ns.routes.append('OCTAVIA-MGMT-NET') %}
 {%       set _ = ns.routes.append('ILO') %}
