@@ -123,7 +123,11 @@
         #
 
         - provider: ip-cluster
+{%     if 'IPV4-MANAGEMENT' in network_group['component_endpoints'] %}
+          name: internal-lb-ipv4
+{%     else %}
           name: internal-lb
+{%     endif %}
           tls-components:
             - default
           components:

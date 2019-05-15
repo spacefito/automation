@@ -17,16 +17,17 @@
 
 network_groups:
   - name: IPV4-MANAGMENT
-    hostname_suffix: conf
+    hostname_suffix: ipv4-mgmt
     tagged_vlan: false
     component_endpoints:
       - CLM
       - IPV4-MANAGEMENT
+      - INTERNAL-API
     routes:
       - default
 
   - name: IPV6-MANAGEMENT
-    hostname_suffix: mgmt
+    hostname_suffix: ipv6-mgmt
     tagged_vlan: false
     component_endpoints:
       - IPV6-MANAGEMENT

@@ -32,24 +32,16 @@ service_groups:
     member_count: '{{ (clm_model == "standalone") | ternary(1, 0) }}'
     service_components:
       - CLM
-  - name: controller-ipv4
+  - name: controller
     type: cluster
-    prefix: c1-ipv4
-    heat_flavor_id: "{{ vcloud_flavor_name_prefix }}-controller"
-    member_count: '{{ controllers|default(3) }}'
-    service_components:
-      - '{{ (clm_model == "integrated") | ternary("CLM", '') }}'
-      - mysql
-      - rabbitmq
-  - name: controller-ipv6
-    type: cluster
-    prefix: c1-ipv6
+    prefix: c1
     heat_flavor_id: "{{ vcloud_flavor_name_prefix }}-controller"
     member_count: '{{ controllers|default(3) }}'
     service_components:
       - '{{ (clm_model == "integrated") | ternary("CLM", '') }}'
       - CORE
       - LMM
+      - DBMQ
       - SWPAC
       - NEUTRON
       - SWOBJ
