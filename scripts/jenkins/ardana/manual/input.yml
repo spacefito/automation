@@ -60,7 +60,7 @@ homeproject: ''
 # The name of cloud product which will be deployed. Default is ardana and
 # possible values are:
 # - crowbar
-# - ardana (default)
+# - ardana 
 cloud_product: ''
 
 # The name of the one of the available 'ardana-ci' input models to use from
