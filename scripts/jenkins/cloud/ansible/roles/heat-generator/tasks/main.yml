@@ -79,16 +79,7 @@
   ignore_errors: True
 
 - name: Update DNS and NTP servers in input model
-  shell: >
-    python -c "
-       import yaml;
-       f = open('cloudConfig.yml');
-       data = yaml.load(f.read());
-       f.close();
-       data['cloud']['dns-settings']=dict(nameservers = {{ dns_servers }});
-       data['cloud']['ntp-servers'] = {{ ntp_servers }};
-       f = open('cloudConfig.yml', 'w');
-       f.write(yaml.safe_dump(data, default_flow_style=False));
-       f.close();"
-  args:
-    chdir: '{{ input_model_path }}'
+  update_dns_ntp_input_model:
+    dns_servers: "{{ dns_servers }}"
+    ntp_servers: "{{ ntp_servers }}"
+    file_path: "{{ input_model_path }}/cloudConfig.yml"
